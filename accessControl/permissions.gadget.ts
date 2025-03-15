@@ -16,6 +16,36 @@ export const permissions: GadgetPermissions = {
         action: true,
       },
       models: {
+        foodBanks: {
+          read: {
+            filter: "accessControl/filters/foodBanks/tenant.gelly",
+          },
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
+        msgBoard: {
+          read: {
+            filter: "accessControl/filters/msgBoard/tenant.gelly",
+          },
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
+        shelters: {
+          read: {
+            filter: "accessControl/filters/shelters/tenant.gelly",
+          },
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
         user: {
           read: {
             filter: "accessControl/filters/user/tenant.gelly",
@@ -29,6 +59,9 @@ export const permissions: GadgetPermissions = {
             },
           },
         },
+      },
+      actions: {
+        distribute: true,
       },
     },
     unauthenticated: {
@@ -44,6 +77,9 @@ export const permissions: GadgetPermissions = {
             verifyEmail: true,
           },
         },
+      },
+      actions: {
+        distribute: true,
       },
     },
   },
