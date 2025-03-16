@@ -7,6 +7,7 @@ export const schema: GadgetModel = {
   type: "gadget/model-schema/v1",
   storageKey: "fy03RKDfaAI3",
   fields: {
+    address: { type: "string", storageKey: "YzUKCkBgriqZ" },
     capacity: {
       type: "number",
       decimals: 0,
@@ -18,5 +19,8 @@ export const schema: GadgetModel = {
       decimals: 0,
       storageKey: "M0te2zTtsTKj",
     },
+    latitude: { type: "number", storageKey: "3h_l9_rWRYdE" },
+    longitude: { type: "number", storageKey: "8hIOSH-HoSgj" },
+    name: { type: "string", storageKey: "ruUmCTNNr1bF" },
   },
 };

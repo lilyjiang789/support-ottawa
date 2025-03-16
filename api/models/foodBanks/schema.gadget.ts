@@ -18,6 +18,8 @@ export const schema: GadgetModel = {
       decimals: 0,
       storageKey: "pca1mgjB96pq",
     },
+    latitude: { type: "number", storageKey: "qi4Jd5f3vc3D" },
+    longitude: { type: "number", storageKey: "W7YEtthqkE43" },
     name: { type: "string", storageKey: "nxBd55DEa1FO" },
   },
 };
