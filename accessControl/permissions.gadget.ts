@@ -55,6 +55,9 @@ export const permissions: GadgetPermissions = {
     unauthenticated: {
       storageKey: "unauthenticated",
       models: {
+        announcements: {
+          read: true,
+        },
         user: {
           actions: {
             resetPassword: true,
@@ -69,9 +72,15 @@ export const permissions: GadgetPermissions = {
     },
     "foodbank-admin": {
       storageKey: "foodbank-admin",
+      default: {
+        read: true,
+      },
     },
     "shelter-admin": {
       storageKey: "shelter-admin",
+      default: {
+        read: true,
+      },
     },
   },
 };

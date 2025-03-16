@@ -5,8 +5,11 @@ export const run: ActionRun = async ({ params, record, logger, api, session }) =
   session?.set("user", null);
 };
 
-export const onSuccess: ActionOnSuccess = async ({ params, record, logger, api, session }) => {
-  // Your logic goes here
+export const onSuccess: ActionOnSuccess = async ({ params, record, logger, api, session, request }) => {
+  // Redirect to home page after sign out
+  if (request && request.headers) {
+    request.headers["Gadget-Redirect"] = "/";
+  }
 };
 
 export const options: ActionOptions = {

@@ -7,10 +7,25 @@ export const schema: GadgetModel = {
   type: "gadget/model-schema/v1",
   storageKey: "dVwj-vwPqXvm",
   fields: {
+    contact: { type: "email", storageKey: "jYCEmyv6UmpT" },
+    date: {
+      type: "dateTime",
+      includeTime: true,
+      storageKey: "LaN4aAhWQgsg",
+    },
+    description: { type: "string", storageKey: "r8ZjG6s58vaR" },
+    time: {
+      type: "dateTime",
+      includeTime: true,
+      storageKey: "yWyQzKq7SkJm",
+    },
+    title: { type: "string", storageKey: "QdmRuRfhZ69j" },
+    type: { type: "string", storageKey: "dbYFq8Nh8XVg" },
     user: {
       type: "belongsTo",
       parent: { model: "user" },
       storageKey: "dVwj-vwPqXvm-BelongsTo-User",
     },
+    where: { type: "string", storageKey: "i2UlKjpE8p3Q" },
   },
 };

@@ -1,9 +1,28 @@
 import React, { useState } from "react";
 import { Menu, X, Home } from "lucide-react";
+import { useAction } from "@gadgetinc/react";
+import { Link, useNavigate } from "react-router";
+import { api } from "../../api";
 
-const Sidebar = () => {
+interface SideNavBarProps {
+  isAuthenticated?: boolean;
+}
+
+const SideNavBar = ({ isAuthenticated = false }: SideNavBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
+  const [{ fetching }, signOut] = useAction(api.user.signOut);
+  
+  const handleSignOut = async () => {
+    try {
+      await signOut({}); // Pass empty object to match action expectations
+      navigate("/"); // Use React Router's navigate for redirection
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+  
   return (
     <div className="relative">
       {/* Hamburger Menu */}
@@ -27,21 +46,34 @@ const Sidebar = () => {
 
         {/* Navigation Links */}
         <nav className="mt-10 space-y-3 text-2xl pl-6">
-          <a href="/about" className="block hover:bg-secondary">About</a>
-          <a href="/announcements" className="block hover:bg-secondary">Announcements</a>
-          <a href="/find-shelter" className="block hover:bg-secondary">Find Shelter</a>
-          <a href="/find-food" className="block hover:bg-secondary">Find Food</a>
-          <a href="/donate" className="block hover:bg-secondary">Donate</a>
-          <a href="/stats" className="block hover:bg-secondary">Current Stats</a>
+          <Link to="/about" className="block hover:bg-secondary">About</Link>
+          <Link to="/announcements" className="block hover:bg-secondary">Announcements</Link>
+          <Link to="/find-shelter" className="block hover:bg-secondary">Find Shelter</Link>
+          <Link to="/find-food" className="block hover:bg-secondary">Find Food</Link>
+          <Link to="/donate" className="block hover:bg-secondary">Donate</Link>
+          <Link to="/stats" className="block hover:bg-secondary">Current Stats</Link>
         </nav>
 
-        {/* Sign Up/Login */}
+        {/* Authentication Links */}
         <div className="absolute bottom-12 left-6 pl-6">
-          <a href="#" className="text-sm hover:bg-secondary">Sign Up/Log in</a>
+          {isAuthenticated ? (
+            <div className="space-y-2">
+              <Link to="/profile" className="text-sm hover:bg-secondary block">Profile</Link>
+              <button 
+                onClick={handleSignOut} 
+                disabled={fetching}
+                className="text-sm hover:bg-secondary text-left w-full"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <Link to="/sign-in" className="text-sm hover:bg-secondary">Sign Up/Log in</Link>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default SideNavBar;

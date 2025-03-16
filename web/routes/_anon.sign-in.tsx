@@ -24,10 +24,10 @@ export default function () {
   return (
     <div className="w-[420px]">
       <div className="space-y-8">
-        <Card className="p-8">
+        <Card className="p-8 bg-secondary">
           <form onSubmit={submit}>
             <div className="space-y-6">
-              <h1 className="text-3xl font-bold tracking-tight">Login</h1>
+              <h1 className="text-3xl font-bold tracking-tight text-white">Login</h1>
               <Button variant="outline" size="lg" className="w-full" asChild>
                 <a href={`/auth/google/start${search}`}>
                   <img
@@ -42,16 +42,16 @@ export default function () {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <div className="space-y-1">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className="text-white">Email</Label>
                     <Input
                       id="email"
                       type="email"
                       placeholder="Email"
                       autoComplete="off"
                       {...register("email")}
-                      className={
+                      className={`bg-white text-primary ${
                         errors?.user?.email?.message ? "border-destructive" : ""
-                      }
+                      }`}
                     />
                     {errors?.user?.email?.message && (
                       <p className="text-sm text-destructive">
@@ -62,18 +62,18 @@ export default function () {
                 </div>
                 <div className="space-y-2">
                   <div className="space-y-1">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password" className="text-white">Password</Label>
                     <Input
                       id="password"
                       type="password"
                       placeholder="Password"
                       autoComplete="off"
                       {...register("password")}
-                      className={
+                      className={`bg-white text-primary ${
                         errors?.user?.password?.message
                           ? "border-destructive"
                           : ""
-                      }
+                      }`}
                     />
                     {errors?.user?.password?.message && (
                       <p className="text-sm text-destructive">
@@ -95,11 +95,11 @@ export default function () {
                     {errors.root.message}
                   </p>
                 )}
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-white/80">
                   Forgot your password?{" "}
                   <Link
                     to="/forgot-password"
-                    className="text-primary hover:underline font-medium"
+                    className="text-white hover:underline font-medium"
                   >
                     Reset password
                   </Link>
@@ -108,11 +108,11 @@ export default function () {
             </div>
           </form>
         </Card>
-        <p className="text-sm text-muted-foreground text-center mt-4">
+        <p className="text-sm text-white/80 text-center mt-4">
           Don't have an account?{" "}
           <Link
             to="/sign-up"
-            className="text-primary hover:underline font-medium"
+            className="text-white hover:underline font-medium"
           >
             Get started →
           </Link>
