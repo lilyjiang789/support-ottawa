@@ -16,6 +16,54 @@ export const permissions: GadgetPermissions = {
         action: true,
       },
       models: {
+        foodBank: {
+          read: {
+            filter: "accessControl/filters/foodBank/tenant.gelly",
+          },
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
+        foodBanks: {
+          read: {
+            filter: "accessControl/filters/foodBanks/tenant.gelly",
+          },
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
+        msgBoard: {
+          read: {
+            filter: "accessControl/filters/msgBoard/tenant.gelly",
+          },
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
+        shelter: {
+          read: true,
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
+        shelters: {
+          read: {
+            filter: "accessControl/filters/shelters/tenant.gelly",
+          },
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
         user: {
           read: {
             filter: "accessControl/filters/user/tenant.gelly",
@@ -30,10 +78,29 @@ export const permissions: GadgetPermissions = {
           },
         },
       },
+      actions: {
+        distribute: true,
+        fixGrab: true,
+      },
     },
     unauthenticated: {
       storageKey: "unauthenticated",
       models: {
+        foodBank: {
+          read: true,
+        },
+        foodBanks: {
+          read: true,
+        },
+        msgBoard: {
+          read: true,
+        },
+        shelter: {
+          read: true,
+        },
+        shelters: {
+          read: true,
+        },
         user: {
           actions: {
             resetPassword: true,
@@ -44,6 +111,9 @@ export const permissions: GadgetPermissions = {
             verifyEmail: true,
           },
         },
+      },
+      actions: {
+        distribute: true,
       },
     },
   },

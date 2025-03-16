@@ -997,6 +997,11 @@
     urql "^4.0.4"
     yup "^1.2.0"
 
+"@google/generative-ai@^0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@google/generative-ai/-/generative-ai-0.24.0.tgz#4d27af7d944c924a27a593c17ad1336535d53846"
+  integrity sha512-fnEITCGEB7NdX0BhoYZ/cq/7WPZ1QS5IzJJfC3Tg/OwkvBetMiVJciyaan297OvE4B9Jg1xvo0zIazX/9sGu1Q==
+
 "@hookform/resolvers@^3.3.1":
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-3.10.0.tgz#7bfd18113daca4e57e27e1205b7d5a2d371aa59a"
@@ -2380,6 +2385,11 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.6.tgz#628effeeae2064a1b4e79f78e81d87b7e5fc7b50"
   integrity sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==
 
+"@types/google.maps@^3.54.10":
+  version "3.58.1"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.58.1.tgz#71ce3dec44de1452f56641d2c87c7dd8ea964b4d"
+  integrity sha512-X9QTSvGJ0nCfMzYOnaVs/k6/4L+7F5uCS+4iUmkLEls6J9S/Phv+m/i3mDeyc49ZBgwab3EFO1HEoBY7k98EGQ==
+
 "@types/hast@^3.0.0":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/hast/-/hast-3.0.4.tgz#1d6b39993b82cea6ad783945b0508c25903e15aa"
@@ -2449,6 +2459,14 @@
   dependencies:
     "@0no-co/graphql.web" "^1.0.5"
     wonka "^6.3.2"
+
+"@vis.gl/react-google-maps@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@vis.gl/react-google-maps/-/react-google-maps-1.5.2.tgz#8ecc74b8c1aa6ccffd62d235513da7337f376a08"
+  integrity sha512-0Ypmde7M73GgV4TgcaUTNKXsbcXWToPVuawMNrVg7htXmhpEfLARHwhtmP6N1da3od195ZKC8ShXzC6Vm+zYHQ==
+  dependencies:
+    "@types/google.maps" "^3.54.10"
+    fast-deep-equal "^3.1.3"
 
 abstract-logging@^2.0.1:
   version "2.0.1"
