@@ -67,6 +67,15 @@ export const permissions: GadgetPermissions = {
     unauthenticated: {
       storageKey: "unauthenticated",
       models: {
+        foodBanks: {
+          read: true,
+        },
+        msgBoard: {
+          read: true,
+        },
+        shelters: {
+          read: true,
+        },
         user: {
           actions: {
             resetPassword: true,

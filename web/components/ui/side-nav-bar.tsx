@@ -22,17 +22,17 @@ const Sidebar = () => {
       >
         {/* Title */}
         <h1 className="text-5xl font-bold mt-40 pl-6">
-          Support <span className="block">Ottawa <Home className="inline-block" size={35} /></span>
+          Support <span className="block">Ottawa <a href="/"><Home className="inline-block" size={35} /></a></span>
         </h1>
 
         {/* Navigation Links */}
         <nav className="mt-10 space-y-3 text-2xl pl-6">
-          <a href="#" className="block hover:bg-secondary">About</a>
-          <a href="#" className="block hover:bg-secondary">Announcements</a>
-          <a href="#" className="block hover:bg-secondary">Find Shelter</a>
-          <a href="#" className="block hover:bg-secondary">Find Food</a>
-          <a href="#" className="block hover:bg-secondary">Donate Food</a>
-          <a href="#" className="block hover:bg-secondary">Current Stats</a>
+          <a href="/about" className="block hover:bg-secondary">About</a>
+          <a href="/announcements" className="block hover:bg-secondary">Announcements</a>
+          <a href="/find-shelter" className="block hover:bg-secondary">Find Shelter</a>
+          <a href="/find-food" className="block hover:bg-secondary">Find Food</a>
+          <a href="/donate" className="block hover:bg-secondary">Donate Food</a>
+          <a href="/stats" className="block hover:bg-secondary">Current Stats</a>
         </nav>
 
         {/* Sign Up/Login */}
