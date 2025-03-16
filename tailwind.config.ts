@@ -12,11 +12,11 @@ export default {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: '#79A6FF',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
+  				DEFAULT: '#B2CBFF',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			destructive: {
@@ -28,7 +28,7 @@ export default {
   				foreground: 'hsl(var(--muted-foreground))'
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
+  				DEFAULT: '#D9D9D9',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   			popover: {
@@ -38,6 +38,10 @@ export default {
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
+  			},
+  			main: {
+  				DEFAULT: 'hsl(var(--main))',
+  				foreground: 'hsl(var(--main-foreground))'
   			},
   			chart: {
   				'1': 'hsl(var(--chart-1))',

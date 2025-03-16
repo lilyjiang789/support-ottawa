@@ -16,6 +16,27 @@ export const permissions: GadgetPermissions = {
         action: true,
       },
       models: {
+        announcements: {
+          read: {
+            filter:
+              "accessControl/filters/announcements/tenant.gelly",
+          },
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
+        partners: {
+          read: {
+            filter: "accessControl/filters/partners/tenant.gelly",
+          },
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
         user: {
           read: {
             filter: "accessControl/filters/user/tenant.gelly",
@@ -45,6 +66,12 @@ export const permissions: GadgetPermissions = {
           },
         },
       },
+    },
+    "foodbank-admin": {
+      storageKey: "foodbank-admin",
+    },
+    "shelter-admin": {
+      storageKey: "shelter-admin",
     },
   },
 };
