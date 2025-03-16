@@ -44,12 +44,12 @@ export default function () {
       avoidTolls: false
     }*/
      let dists = [];
-    const foodBanks = await api.foodBanks.findMany();
+    const foodList = await api.foodBank.findMany();
     let n = 0;
-    await foodBanks.forEach((entry) =>{
+    await foodList.forEach((entry) =>{
       //req.destinations.push({lat:entry.latitude,lng:entry.longitude});
       let dis = 1000*distance(lats,lngs,entry.latitude,entry.longitude);
-      if(dis <= 0 /* We can check within a radius around you! 10000*/) dists.push([n,dis]);
+      if(dis => 0 /* We can check within a radius around you! 10000*/) dists.push([n,dis]);
       n++;
     });
     /*const distServ = await new service.DistanceMatrixService();
@@ -63,11 +63,18 @@ export default function () {
     });
     setGoTo(dists);*/
     const res = await api.distribute({db:"food",going:1,details: detail ,dist:dists});
-    //let place = res.split('\n')[0];
-    const place = await api.foodBanks.findFirst({
+    console.log("Reasoning:");
+    console.log(res);
+    /*const place = await api.foodBanks.findFirst({
       filter: {name: {equals: res.split('\n')[0]}}
-    });
-    setGoTo([place]);
+    });*/
+    for(let entry of foodList){
+      if(entry.name == res.split('\n')[0]){
+        setGoTop([entry]);
+        break;
+      }
+    }
+    //setGoTo([place]);
     setPlaces([<AdvancedMarker position={{ lat: place.latitude, lng: place.longitude }}/>]);
   }
 
@@ -96,15 +103,14 @@ export default function () {
 
   const updatePlaces = async () => {
     try {
-      const foodBanks = await api.foodBanks.findMany();
+      const list = await api.foodBank.findMany();
       
       const markers = [];
       
       // Add food bank markers
-      foodBanks.forEach((entry) => {
+      list.forEach((entry) => {
         markers.push(
           <AdvancedMarker 
-            key={`foodbank-${entry.id}`} 
             position={{ lat: entry.latitude, lng: entry.longitude }} 
           />
         );

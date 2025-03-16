@@ -37,7 +37,7 @@ const Sidebar = () => {
 
         {/* Sign Up/Login */}
         <div className="absolute bottom-12 left-6 pl-6">
-          <a href="#" className="text-sm hover:bg-secondary">Sign Up/Log in</a>
+          <a href="/sign-in" className="text-sm hover:bg-secondary">Sign Up/Log in</a>
         </div>
       </div>
     </div>

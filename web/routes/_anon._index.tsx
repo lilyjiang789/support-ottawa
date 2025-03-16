@@ -31,11 +31,6 @@ export default function () {
   const toggleShelters = () => {
     setSheltersExpanded(!sheltersExpanded);
   };
-  
-  const handleDistribute = async () => {
-    setOutput("Processing...");
-    setOutput((await distribute({ prompt: "say hi!" })).data);
-  };
 
   const updateLoc = () =>{
   if(!navigator.geolocation){
@@ -54,26 +49,26 @@ export default function () {
 
   const updatePlaces = async () => {
     try {
-      const foodBanks = await api.foodBanks.findMany();
-      const shelters = await api.shelters.findMany();
+      //const foodBanks = await api.foodBank.findMany();
+      const shelters = await api.shelter.findMany();
       
       const markers = [];
       
       // Add food bank markers
-      foodBanks.forEach((entry) => {
+      /**foodBanks.forEach((entry) => {
         markers.push(
           <Marker 
-            key={`foodbank-${entry.id}`} 
+            //key={`foodbank-${entry.id}`} 
             position={{ lat: entry.latitude, lng: entry.longitude }} 
           />
         );
-      });
+      });*/
       
       // Add shelter markers
       shelters.forEach((entry) => {
         markers.push(
           <Marker 
-            key={`shelter-${entry.id}`} 
+            //key={`shelter-${entry.id}`} 
             position={{ lat: entry.latitude, lng: entry.longitude }} 
           />
         );

@@ -1,7 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 const key:string = process.env.GEMINI_API_KEY == undefined ? "":process.env.GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI(key);
-const model = genAI.getGenerativeModel({model:"gemini-1.5-flash"});
 import { useMapsLibrary } from "@vis.gl/react-google-maps";
 
 export const params = {
@@ -12,6 +10,8 @@ export const params = {
 };
 
 export const run: ActionRun = async ({ params, logger, api, connections }) => {
+  const genAI = new GoogleGenerativeAI(key);
+  const model = genAI.getGenerativeModel({model:"gemini-1.5-flash"});
   //Check Array
   if (!params.dist || !Array.isArray(params.dist)) {
     logger.error("Invalid dist parameter: expected an array but received", typeof params.dist);
@@ -20,7 +20,7 @@ export const run: ActionRun = async ({ params, logger, api, connections }) => {
   //Determine search area
   let place;
   if(params.db == "shelter"){
-    place = await api.shelters.findMany();
+    place = await api.shelter.findMany();
   }else{
     place = await api.foodBanks.findMany();
   }

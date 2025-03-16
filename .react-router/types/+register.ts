@@ -10,6 +10,7 @@ type Params = {
   "/": {};
   "/forgot-password": {};
   "/reset-password": {};
+  "/announcements": {};
   "/find-shelter": {};
   "/verify-email": {};
   "/find-food": {};

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router";
 import Sidebar from "@/components/ui/side-nav-bar";
-import { useGlobalAction, useFindBy } from "@gadgetinc/react";
+import { useGlobalAction, useFindBy, useFindMany } from "@gadgetinc/react";
 import { APIProvider, Map, useMapsLibrary, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
 import { api } from "../api";
 import { useState, useEffect } from "react";
@@ -14,6 +14,7 @@ export default function () {
   const [places, setPlaces] = useState([]);
   const [goTo,setGoTo] = useState([]);
   const [detail,setDetails] = useState("");
+  //const shelters = api.shelters;
   //const service = useMapsLibrary('routes');
   //const unit = useMapsLibrary('core');
 
@@ -44,12 +45,12 @@ export default function () {
       avoidTolls: false
     }*/
      let dists = [];
-    const shelters = await api.shelters.findMany();
+    const shelterList = await api.shelter.findMany() //.findMany();
     let n = 0;
-    await shelters.forEach((entry) =>{
+    await shelterList.forEach((entry) =>{
       //req.destinations.push({lat:entry.latitude,lng:entry.longitude});
       let dis = 1000*distance(lats,lngs,entry.latitude,entry.longitude);
-      if(dis <= 0 /* We can check within a radius around you! 10000*/) dists.push([n,dis]);
+      if(dis => 0 /* We can check within a radius around you! 10000*/) dists.push([n,dis]);
       n++;
     });
     /*const distServ = await new service.DistanceMatrixService();
@@ -65,11 +66,19 @@ export default function () {
     const res = await api.distribute({db:"shelter",going:0,details: detail ,dist:dists});
     console.log("Reasoning:");
     console.log(res);
-    const place = await api.shelters.findFirst({
+    /*const place = await api.shelter.findFirst({
       filter: {name: {equals: res.split('\n')[0]}}
-    });
-    setGoTo([place]);
-    setPlaces([<AdvancedMarker position={{ lat: place.latitude, lng: place.longitude }}/>]);
+    });*/
+    for(let entry of shelterList){
+      console.log(entry);
+      if((res.split('\n')[0]).includes(entry.name)){
+        setGoTo([entry]);
+        break;
+      }
+    }
+    //setGoTo([place]);
+    console.log(goTo);
+    setPlaces([<AdvancedMarker position={{ lat: goTo[0].latitude, lng: goTo[0].longitude }}/>]);
   }
 
   useEffect(() => {
@@ -97,15 +106,15 @@ export default function () {
 
   const updatePlaces = async () => {
     try {
-      const shelters = await api.shelters.findMany();
+      const list = await api.shelter.findMany();
       
       const markers = [];
       
       // Add shelter markers
-      shelters.forEach((entry) => {
+      list.forEach((entry) => {
         markers.push(
           <AdvancedMarker 
-            key={`shelter-${entry.id}`} 
+            /*key={`shelter-${entry.id}`} */
             position={{ lat: entry.latitude, lng: entry.longitude }} 
           />
         );

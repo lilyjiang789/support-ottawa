@@ -49,7 +49,7 @@ export default function () {
     await foodBanks.forEach((entry) =>{
       //req.destinations.push({lat:entry.latitude,lng:entry.longitude});
       let dis = 1000*distance(lats,lngs,entry.latitude,entry.longitude);
-      if(dis <= 0 /* We can check within a radius around you! 10000*/) dists.push([n,dis]);
+      if(dis => 0 /* We can check within a radius around you! 10000*/) dists.push([n,dis]);
       n++;
     });
     /*const distServ = await new service.DistanceMatrixService();
@@ -63,7 +63,8 @@ export default function () {
     });
     setGoTo(dists);*/
     const res = await api.distribute({db:"food",going:0,details: detail ,dist:dists});
-    //let place = res.split('\n')[0];
+    console.log("Reasoning:");
+    console.log(res);
     const place = await api.foodBanks.findFirst({
       filter: {name: {equals: res.split('\n')[0]}}
     });

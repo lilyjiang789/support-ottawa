@@ -8,11 +8,11 @@ export const loader = async ({ context }: Route.LoaderArgs) => {
 
   const signedIn = !!session?.get("user");
 
-  if (signedIn) {
+  /*if (signedIn) {
     return redirect(
       gadgetConfig.authentication!.redirectOnSuccessfulSignInPath!
     );
-  }
+  }*/
 
   return {};
 };
